@@ -209,13 +209,3 @@ Please open an issue for improvements or bug reports.
 # **License**
 
 This project is open-source and available for educational and research use.
-
----
-
-If you'd like, I can also generate:
-
-* A short summary version
-* A full academic research paper (IEEE / ACL style)
-* A poster or slide deck
-
-Just let me know!
