@@ -73,7 +73,7 @@ Example comparison (10 samples shown in results folder):
 
 | Raw Tweet                                                | Cleaned Tweet      |
 | -------------------------------------------------------- | ------------------ |
-| "OMG I LOVE this!! [https://t.co/xyz](https://t.co/xyz)" | "omg i love this"  |
+| "OMG I LOVE this!!" | "omg i love this"  |
 | "@user this is NOT good!! #fail"                         | "this is not good" |
 
 ---
