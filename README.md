@@ -1,6 +1,3 @@
-Here is your **clean, professional, emoji-free README**, updated to include the **Sentiment140 dataset link** and formatted for a GitHub project.
-You can copy–paste this directly into `README.md`.
-
 ---
 
 # **Twitter Sentiment Classification & Error Analysis**
