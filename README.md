@@ -3,7 +3,7 @@ You can copy–paste this directly into `README.md`.
 
 ---
 
-# **Industry-Level Twitter Sentiment Classification & Error Analysis**
+# **Twitter Sentiment Classification & Error Analysis**
 
 This repository contains an end-to-end sentiment analysis pipeline built using the **Sentiment140** Twitter dataset.
 The project follows industry-standard machine learning procedures such as preprocessing, multi-model evaluation, and detailed error analysis.
