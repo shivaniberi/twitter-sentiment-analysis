@@ -1,234 +1,224 @@
-# twitter-sentiment-analysis
-Sentiment Analysis in Twitter using transformer
-Here is a **clean, professional, copy-paste-ready GitHub README** for your project — written so it fits academic, industry, and portfolio standards.
-I’ve formatted it so you can paste directly into your `README.md`.
+Here is your **clean, professional, emoji-free README**, updated to include the **Sentiment140 dataset link** and formatted for a GitHub project.
+You can copy–paste this directly into `README.md`.
 
 ---
 
-# 📘 **Industry-Level Twitter Sentiment Classification & Error Analysis**
+# **Industry-Level Twitter Sentiment Classification & Error Analysis**
 
-This repository contains an end-to-end **sentiment analysis pipeline** built using the **Sentiment140 dataset**, following real industry ML workflows such as preprocessing, multi-model benchmarking, and detailed error analysis.
+This repository contains an end-to-end sentiment analysis pipeline built using the **Sentiment140** Twitter dataset.
+The project follows industry-standard machine learning procedures such as preprocessing, multi-model evaluation, and detailed error analysis.
 
-The project was originally developed as part of an academic assignment, but has been extended into **research-paper quality documentation**, including methodology, experiments, results, and insights from misclassification analysis.
-
----
-
-## 🚀 **Project Overview**
-
-The goal of this project is to classify Twitter sentiment (positive vs. negative) using multiple text-representation methods and deep-learning models.
-A minimum of **30,000 tweets** were used for training, with:
-
-* **4,000 tweets for validation**
-* **4,000 tweets for testing**
-
-The pipeline emphasizes **industry-grade preprocessing**, **multiple embeddings**, **deep learning architectures**, and **human-interpretable error analysis**.
+Originally created as an academic assignment, the project has been extended into a research-style implementation with structured methodology, experiments, and model performance comparisons.
 
 ---
 
-# 📂 **Repository Structure**
+## **Project Overview**
+
+This project uses the entire Sentiment140 dataset for training machine learning models.
+From the full dataset of 1.6 million tweets, the following splits were created:
+
+Training: all tweets except those reserved for evaluation
+Validation: 4,000 tweets
+Test (Evaluation): 4,000 tweets
+This ensures the model is trained on the maximum amount of available data, while keeping clean and balanced validation and test subsets for proper evaluation.
+
+The project includes:
+
+* Real-world tweet preprocessing
+* Multiple embedding methods
+* LSTM-based model architectures
+* Error analysis on misclassified samples
+
+---
+
+## **Dataset**
+
+This project uses the **Sentiment140** dataset published on Kaggle:
+
+**Dataset link:**
+[https://www.kaggle.com/datasets/kazanova/sentiment140](https://www.kaggle.com/datasets/kazanova/sentiment140)
+
+**Primary file used:**
+`training.1600000.processed.noemoticon.csv`
+
+> Note: Due to GitHub file-size limitations, the dataset is **not included** in this repository.
+> Please download it from Kaggle and place it in:
+> `data/train/` before running the notebook.
+
+---
+
+## **Repository Structure**
 
 ```
-├── data/                       # Training, validation, test splits
-├── notebooks/
+├── data/                       # Place training/validation/test data here (not included)
+├── notebook/
 │   └── sentiment_analysis_source_code.ipynb
-├── models/                     # Saved models + embeddings (TF-IDF, W2V, GloVe)
-├── results/                    # Metrics tables, charts, and error samples
+├── models/                     # Saved models and embeddings
+├── results/                    # Metrics tables, plots, error samples
 ├── README.md                   # Project documentation
 └── requirements.txt
 ```
 
 ---
 
-# 🧹 **1. Data Cleaning & Preprocessing**
+# **1. Data Cleaning & Preprocessing**
 
-Tweets undergo real moderation-pipeline cleaning steps:
+Tweets undergo the following preprocessing steps:
 
-### ✔ Lowercasing
+* Lowercasing
+* URL removal
+* Removal of @mentions and hashtags
+* Punctuation removal
+* Tokenization
+* OOV handling using BPE/WordPiece or FastText-style n-grams
 
-### ✔ URL removal
+Example comparison (10 samples shown in results folder):
 
-### ✔ @mentions & #hashtags removal
-
-### ✔ Punctuation removal
-
-### ✔ Tokenization
-
-### ✔ OOV Handling (BPE / WordPiece / FastText-style n-grams)
-
-A preview of raw vs. cleaned tweets (example format):
-
-| Raw Tweet                                                     | Cleaned Tweet      |
-| ------------------------------------------------------------- | ------------------ |
-| "OMG I LOVE this!! 😂😂 [https://t.co/xyz](https://t.co/xyz)" | "omg i love this"  |
-| "@user this is NOT good!! #fail"                              | "this is not good" |
-| ...                                                           | ...                |
-
-(Full table available in results folder.)
+| Raw Tweet                                                | Cleaned Tweet      |
+| -------------------------------------------------------- | ------------------ |
+| "OMG I LOVE this!! [https://t.co/xyz](https://t.co/xyz)" | "omg i love this"  |
+| "@user this is NOT good!! #fail"                         | "this is not good" |
 
 ---
 
-# 🧪 **2. Multi-Representation + Multi-Model Evaluation**
+# **2. Multi-Representation + Multi-Model Evaluation**
 
-We evaluate **9 model combinations**:
+The project evaluates **nine total models** using:
 
-## 🔤 **Text Representations**
+### **Text Representations**
 
-1. **TF–IDF**
-2. **Word2Vec (Skip-Gram)**
-3. **GloVe Pretrained Embeddings**
+1. TF–IDF
+2. Word2Vec (Skip-Gram)
+3. GloVe (Pretrained Embeddings)
 
-## 🧠 **Sequential Deep Learning Models**
+### **Sequential Deep Learning Models**
 
-1. **LSTM**
-2. **GRU**
-3. **BiLSTM**
+1. LSTM
+2. GRU
+3. BiLSTM
 
-Each embedding × model pair produces a classifier.
+Each embedding × model combination is trained and evaluated.
 
 ---
 
-# 📊 **3×3 Model Benchmark Results**
-
-A full table (example format):
+## **Benchmark Table (Example Format)**
 
 | Embedding | Model  | Accuracy | Precision | Recall | F1 Score |
 | --------- | ------ | -------- | --------- | ------ | -------- |
-| TF-IDF    | LSTM   | …        | …         | …      | …        |
-| TF-IDF    | GRU    | …        | …         | …      | …        |
-| TF-IDF    | BiLSTM | …        | …         | …      | …        |
-| Word2Vec  | LSTM   | …        | …         | …      | …        |
-| …         | …      | …        | …         | …      | …        |
+| TF-IDF    | LSTM   | ...      | ...       | ...    | ...      |
+| TF-IDF    | GRU    | ...      | ...       | ...    | ...      |
+| Word2Vec  | GRU    | ...      | ...       | ...    | ...      |
+| GloVe     | BiLSTM | ...      | ...       | ...    | ...      |
 
-✔ **Minimum required F1 ≥ 85% achieved**
-⭐ Bonus levels:
+**Minimum required performance:**
 
-* **F1 ≥ 90%** → +2 points
-* **F1 ≥ 93%** → +4 points
-* **F1 ≥ 96%** → +6 points
+* F1 ≥ 85%
+* Additional bonus for higher F1 tiers (90%, 93%, 96%)
 
-All experiments **avoid data leakage**, and the test split is **balanced**.
+All experiments avoid data leakage and maintain a balanced test set.
 
 ---
 
-# 🔍 **3. Industry-Aligned Error Analysis**
+# **3. Industry-Aligned Error Analysis**
 
-Error analysis is performed on **50 misclassified tweets** from the **best model**.
+A detailed analysis was performed on **50 misclassified tweets** from the best-performing model.
+Errors were categorized into:
 
-We categorize failure cases into real-world ML pitfalls:
+### **1. Sarcasm**
 
-## 🗂 **Error Categories**
+Example:
+"Great, another Monday. Exactly what I needed."
+Issue: No explicit negative words; sarcasm misinterpreted as positive.
 
-### 1️⃣ Sarcasm
+### **2. Negation Errors**
 
-Models fail due to conversational irony or tone.
+Example:
+"I am not impressed with this update."
+Issue: Misinterpreting negation structure.
 
-**Example:**
+### **3. OOV Words / Slang**
 
-* *"Oh great, another Monday. Just what I needed."* (model predicted *positive*)
-  **Reason:** Sarcasm lacks explicit negative tokens.
-  **Fix:** Add sarcasm-labeled samples / use transformer context modeling.
+Example:
+"This phone is lit"
+Issue: Informal slang not captured in embeddings.
 
----
+### **4. Multi-Topic Tweets**
 
-### 2️⃣ Negation Errors
+Example:
+"Camera quality is bad but battery is excellent."
+Issue: Conflicting sentiments within a single tweet.
 
-**Example:**
+### **5. Domain Drift**
 
-* *"I am not happy with the update"* (predicted *positive*)
-  **Fix:** Add negation-aware token features / larger context windows.
+Example:
+"Fed raised rates again today"
+Issue: Domain-specific financial terminology not seen during training.
 
----
-
-### 3️⃣ OOV Words, Slang, Emojis
-
-**Example:**
-
-* *"This phone is lit 🔥🔥"*
-  **Fix:** FastText subword embeddings, emoji-to-text dictionaries.
-
----
-
-### 4️⃣ Multi-Topic Tweets
-
-**Example:**
-
-* *"The camera sucks but battery life is great"*
-  **Fix:** Multi-aspect sentiment classification.
+Each category includes explanations and recommended model improvements.
 
 ---
 
-### 5️⃣ Domain Drift
+# **Key Insights**
 
-Models misinterpret topics unseen in training.
-
-**Example:**
-
-* *"Fed hiked rates again lol"*
-  **Fix:** Continual training / domain-adaptive pretraining.
-
-Complete detailed examples included in the paper-style PDF.
+* Traditional embeddings (TF-IDF, Word2Vec, GloVe) remain effective for tweet-length text.
+* BiLSTM with GloVe embeddings achieved the strongest performance.
+* Sarcasm, negation, and slang remain major challenges.
+* Error analysis highlights several avenues for model improvement.
 
 ---
 
-# 🧠 **Key Insights**
-
-* Classical embeddings (TF-IDF, W2V, GloVe) perform strongly even against LLMs for short text.
-* BiLSTM + GloVe delivers the highest F1 score.
-* OOV and sarcasm remain the largest failure modes.
-* Error analysis provides actionable paths for model improvement.
-
----
-
-# 🛠 **Technologies Used**
+# **Technologies Used**
 
 * Python, NumPy, Pandas
 * Scikit-Learn
 * TensorFlow / Keras
 * Gensim (Word2Vec)
 * Pretrained GloVe Embeddings
-* NLTK / spaCy Tokenization
-* Matplotlib / Seaborn for visualization
+* NLTK / spaCy
+* Matplotlib / Seaborn
 
 ---
 
-# 📄 **How to Run**
+# **How to Run**
 
 ```bash
 git clone <your-repo-url>
-cd sentiment-analysis
+cd twitter-sentiment-analysis
 pip install -r requirements.txt
 jupyter notebook
 ```
 
-Open the main `.ipynb` file and execute all cells in order.
+Open `sentiment_analysis_source_code.ipynb` and run all cells in order.
 
 ---
 
-# 📝 **Future Work (Research Extension)**
+# **Future Work**
 
-* Upgrade to **Transformer-based models (BERT, RoBERTa)**
-* Perform **Emoji sentiment embedding + sarcasm detection**
-* Implement **multi-aspect sentiment**
-* Use **domain adaptation** for evolving Twitter slang
-
----
-
-# 🤝 **Contributions**
-
-Pull requests are welcome!
-Feel free to open issues for bug reports or new ideas.
+* Incorporating Transformer-based models (BERT, RoBERTa)
+* Emoji-aware sentiment representations
+* Sarcasm detection modules
+* Multi-aspect sentiment analysis
+* Domain-adaptive model training
 
 ---
 
-# ⭐ **If you like this project, give it a star on GitHub!**
+# **Contributions**
+
+Contributions are welcome.
+Please open an issue for improvements or bug reports.
+
+---
+
+# **License**
+
+This project is open-source and available for educational and research use.
 
 ---
 
 If you'd like, I can also generate:
 
-✅ A short version of README
-✅ A professional abstract (for research paper submission)
-✅ A full research-paper PDF (IEEE/ACL style)
-✅ A poster or slide deck
+* A short summary version
+* A full academic research paper (IEEE / ACL style)
+* A poster or slide deck
 
-Just tell me!
+Just let me know!
